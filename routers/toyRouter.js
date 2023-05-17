@@ -2,8 +2,6 @@ const router = require('express').Router()
 require('../database/db')
 const toysModel = require('../models/toySchema')
 
-
-
 // Search by name
 router.get('/search', async (req, res) => {
     const searchQuery = req.query.name
