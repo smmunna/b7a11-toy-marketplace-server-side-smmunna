@@ -5,9 +5,9 @@ const toySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    sellerName: String,
-    sellerEmail: String,
-    subCategory: String,
+    sellername: String,
+    selleremail: String,
+    category: String,
     price: Number,
     rating: Number,
     quantity: {

@@ -2,6 +2,8 @@ const router = require('express').Router()
 require('../database/db')
 const toysModel = require('../models/toySchema')
 
+
+
 // Search by name
 router.get('/search', async (req, res) => {
     const searchQuery = req.query.name
@@ -12,8 +14,8 @@ router.get('/search', async (req, res) => {
 
 // Search by category
 router.get('/category', async (req, res) => {
-    const searchQuery = req.query.name
-    const result = await toysModel.find({ subCategory: searchQuery })
+    const searchQuery = req.query.cate
+    const result = await toysModel.find({ category: searchQuery })
     res.send(result)
 })
 
