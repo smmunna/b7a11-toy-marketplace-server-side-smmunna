@@ -10,12 +10,11 @@ Available quantity
 Detail description
 */ 
 const mongoose = require('mongoose')
-const {Schema} = mongoose
 
-const toySchema = new Schema({
+const toySchema = new mongoose.Schema({
     name:{
         type:String,
-        required
+        required:true
     },
     sellerName:String,
     sellerEmail:String,
