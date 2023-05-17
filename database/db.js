@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 
-// For Running Locally
-const uri = "mongodb://127.0.0.1:27017/toysDB";
+const username = process.env.DB_USER
+const password = process.env.DB_PASS
+const dbname = "toyDB"
 
 // MongoDB Atlas connection URL
-// const uri = `mongodb+srv://<username>:<password>@cluster0.rvrwrto.mongodb.net/<database>?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${username}:${password}@cluster0.rvrwrto.mongodb.net/${dbname}?retryWrites=true&w=majority`;
 
 // Establish the connection
 mongoose.connect(uri, {

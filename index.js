@@ -11,14 +11,14 @@ app.use(cors())
 app.use(express.json())
 
 // Routings for toy's
-app.use('/toys',toyRouter)
+app.use('/toys', toyRouter)
 
-app.get('/' , (req , res)=>{
-   res.send('Toy Market Place server is successfully running..')
+app.get('/', (req, res) => {
+    res.send('Toy Market Place server is successfully running..')
 })
-app.get('*',(req,res)=>{
+app.get('*', (req, res) => {
     res.send('No Routes Found..!')
 })
 
 
-app.listen(port , ()=> console.log('> Server is up and running on port : ' + port))
+app.listen(port, () => console.log('> Server is up and running on port : ' + port))
