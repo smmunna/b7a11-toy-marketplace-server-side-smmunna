@@ -3,17 +3,16 @@ require('../database/db')
 const toysModel = require('../models/toySchema')
 
 // Search by name
-router.get('/search',async(req,res)=>{
+router.get('/search', async (req, res) => {
     const searchQuery = req.query.name
-    const regexPattern = new RegExp(searchQuery,'i')
-    const result = await toysModel.find({name:regexPattern})
+    const regexPattern = new RegExp(searchQuery, 'i')
+    const result = await toysModel.find({ name: regexPattern })
     res.send(result)
 })
 
 // Search by category
 router.get('/category', async (req, res) => {
     const searchQuery = req.query.name
-    // const regexPattern = new RegExp(searchQuery, 'i')
     const result = await toysModel.find({ subCategory: searchQuery })
     res.send(result)
 })
