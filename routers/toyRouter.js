@@ -2,6 +2,22 @@ const router = require('express').Router()
 require('../database/db')
 const toysModel = require('../models/toySchema')
 
+// Search by name
+router.get('/search',async(req,res)=>{
+    const searchQuery = req.query.name
+    const regexPattern = new RegExp(searchQuery,'i')
+    const result = await toysModel.find({name:regexPattern})
+    res.send(result)
+})
+
+// Search by category
+router.get('/category', async (req, res) => {
+    const searchQuery = req.query.name
+    // const regexPattern = new RegExp(searchQuery, 'i')
+    const result = await toysModel.find({ subCategory: searchQuery })
+    res.send(result)
+})
+
 // Update individual data of added toys
 router.patch('/:id', async (req, res) => {
     const id = req.params.id
