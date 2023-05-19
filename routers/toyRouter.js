@@ -4,7 +4,7 @@ const toysModel = require('../models/toySchema')
 
 // totalProduct count
 router.get('/totalProducts', async (req, res) => {
-    const result = await productCollection.estimatedDocumentCount();
+    const result = await toysModel.estimatedDocumentCount();
     res.send({ totalProducts: result })
 })
 
@@ -90,8 +90,11 @@ router.post('/', async (req, res) => {
 
 // Getting all the data from the database;
 router.get('/', async (req, res) => {
+    const page = parseInt(req.query.page) || 0;
+    const limit = parseInt(req.query.limit) || 5;
+    const skip = page * limit;
     try {
-        const result = await toysModel.find()
+        const result = await toysModel.find().skip(skip).limit(limit)
         res.send(result)
     } catch (error) {
         res.send({
