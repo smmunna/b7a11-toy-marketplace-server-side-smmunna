@@ -2,6 +2,12 @@ const router = require('express').Router()
 require('../database/db')
 const toysModel = require('../models/toySchema')
 
+// totalProduct count
+router.get('/totalProducts', async (req, res) => {
+    const result = await productCollection.estimatedDocumentCount();
+    res.send({ totalProducts: result })
+})
+
 // Search by name
 router.get('/search', async (req, res) => {
     const searchQuery = req.query.name
