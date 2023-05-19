@@ -8,6 +8,19 @@ router.get('/totalProducts', async (req, res) => {
     res.send({ totalProducts: result })
 })
 
+// Search by email
+router.get('/mytoys', async (req, res) => {
+    const query = req.query.email;
+    try {
+        const result = await toysModel.find({ selleremail: query })
+        res.send(result)
+    } catch (error) {
+        res.send({
+            message: error.message
+        })
+    }
+})
+
 // Search by name
 router.get('/search', async (req, res) => {
     const searchQuery = req.query.name
