@@ -12,7 +12,7 @@ router.get('/totalProducts', async (req, res) => {
 router.get('/mytoys', async (req, res) => {
     const query = req.query.email;
     try {
-        const result = await toysModel.find({ selleremail: query })
+        const result = await toysModel.find({ selleremail: query }).sort({price:1})
         res.send(result)
     } catch (error) {
         res.send({
